@@ -1,0 +1,54 @@
+.book-card {
+    padding: 10px;
+    border: 1px dotted orange;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+
+.book-card button {
+    height: 30px;
+}
+
+.display-flex {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+}
+
+.display-flex>button {}
+
+.display-flex>input {
+    width: 400px
+}
+
+
+.centerAddNewBook {
+    width: 50%;
+    margin: auto;
+}
+
+.user-image {
+    height: 200px;
+    width: 200px;
+}
+
+.create-user-form {
+    background-color: #ededed;
+    padding: 5px;
+    margin-top: 5px;
+    overflow: auto;
+
+}
+
+
+
+#searchInput {
+    width: 25%;
+    display: inline-block;
+    margin-top: 10px;
+
+}

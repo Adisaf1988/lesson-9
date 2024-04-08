@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <h1 class="jumbotron" style="text-align: center;"> User Management</h1>
+        </div>
+        <div>
+            <form class="create-user-form">
+                <div class="form-group col-md-3">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="firstName">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="lastName">last name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="lastName">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="phone">Phone</label>
+                    <input type="number" class="form-control" id="phone" aria-describedby="phone" placeholder="phone">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" aria-describedby="age" placeholder="age">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="img">Image</label>
+                    <select class="form-control" id="img">
+                        <option value="https://live.staticflickr.com/33/36479538_6e60b450b1.jpg">Nice Man</option>
+                        <option
+                            value="https://m.media-amazon.com/images/M/MV5BMTU4MzYzMzc4N15BMl5BanBnXkFtZTgwMTg3ODA3MzI@._V1_.jpg">
+                            Nice Woman</option>
+                        <option
+                            value="https://ariamedtour.com/wp-content/uploads/2022/10/male-vs-female-facial-features-differences-1.jpg">
+                            Other</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="We">We</option>
+                        <option value="It">It</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="country">Country</label>
+                    <select class="form-control" id="country">
+                        <option value="Israel">Israel</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Other">Netherlands</option>
+                    </select>
+                </div>
+
+
+                <div class="form-check col-md-3">
+                    <input type="checkbox" class="form-check-input" id="isSingle">
+                    <label class="form-check-label" for="isSingle">Are you single?</label>
+                </div>
+
+            </form>
+            <div>
+                <button id="addNewUser" type="button" class="btn btn-primary">Create user</button>
+                <button id="buttonToDelete" type="button" class="btn btn-danger">DeleteUsers</button>
+            </div>
+            <div class="search-div">
+                <input id="searchInput" type="text" class="form-control" onclick="search()" placeholder="Search User">
+                <button class="btn btn-success" onclick="search()">Search</button>
+            </div>
+
+        </div>
+        <div>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Image</th>
+
+
+                    </tr>
+                </thead>
+                <tbody id="usersTable">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./users.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
