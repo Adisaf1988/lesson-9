@@ -1,5 +1,8 @@
 
 function init() {
+    let selectedUsers = 0;
+    const selectedUsersContainer = document.getElementById("selectedUsersNumber");
+    selectedUsersContainer.innerText = selectedUsersNumber;
     const tableBody = document.getElementById("usersTable")
     draw(users, tableBody)
 
@@ -30,44 +33,48 @@ function init() {
 
         users.push(user)
         draw(users, tableBody)
+
+
+
+
+    })
+
+    const searchInputButton = document.getElementById("search-btn")
+    searchInputButton.addEventListener("click", function () {
+        const input = document.getElementById("searchInput")
+        const searchValue = input.value;
+        const newUsersArr = users.filter(users => users.name.first.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) || users.name.last.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
+        draw(newUsersArr, tableBody)
+
+    })
+
+
+    const deleteAllButton = document.getElementById("buttonToDelete");
+    deleteAllButton.addEventListener("click", function () {
+        usersTable.innerHTML = ""
     })
 }
 
-function search() {
-    const input = document.getElementById("searchInput")
-    const searchValue = input.value.toLowerCase();
-    const newUsersArray = users.filter(userData => {
-        const { first, last } = userData.name;
-        return (
-            first.toLowerCase().includes(searchValue) ||
-            last.toLowerCase().includes(searchValue)
-        );
-    });
-    draw(newUsersArray, document.getElementById("usersTable"));
-}
-
-
-const deleteAllButton = document.getElementById("buttonToDelete");
-deleteAllButton.addEventListener("click", function () {
-    usersTable.innerHTML = ""
-})
 
 
 function draw(arrayOfUsers, tableBody) {
-
-
     tableBody.innerHTML = ""
     for (let index = 0; index < arrayOfUsers.length; index++) {
         tableBody.append(getUserRowUI(arrayOfUsers[index]))
         // table  <=     // row       // data
+
     }
     // const usersRows = arrayOfUsers.map((currentUser) => getUserRowUI(currentUser))
     // tableBody.append(...usersRows)
 
+
 }
 
 
-
+function updateSelectedUsers(arrayOfSelectedUsers) {
+    const selectedUsersContainer = document.getElementById("selectedUsersNumber");
+    selectedUsersContainer.innerText = arrayOfSelectedUsers.length;
+}
 
 function getUserRowUI(user) {
 
@@ -101,10 +108,31 @@ function getUserRowUI(user) {
     const tdCountry = document.createElement("td")
     tdCountry.innerText = user?.location?.country
 
+    const selectBtn = document.createElement("button")
+    selectBtn.classList.name = "select-btn"
+    selectBtn.innerText = "select"
+
+
+    selectBtn.addEventListener("click", function () {
+        if (user.isSelected === true) {
+            user.isSelected = false;
+            selectBtn.innerText = "Select"
+            trUser.style.backgroundColor = "white"
+        } else {
+            user.isSelected = true
+            selectBtn.innerText = "Unselect";
+            trUser.style.backgroundColor = "pink"
+        }
+        updateSelectedUsers(users.filter(user => user.isSelected === true));
+        draw(users, tableBody)
+
+    });
+
 
 
     const trUser = document.createElement("tr")
-    trUser.append(tdId, tdFirstName, tdLastName, tdEmail, tdPhone, tdAge, tdGender, tdCountry, tdImage)
+    trUser.append(tdId, tdFirstName, tdLastName, tdEmail, tdPhone, tdAge, tdGender, tdCountry, selectBtn, tdImage)
+
 
     return trUser
 
